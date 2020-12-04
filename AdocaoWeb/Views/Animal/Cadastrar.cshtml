@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <meta name="viewport" content="width=device-width" />
+    <title>Cadastrar</title>
+</head>
+<body>
+    <form asp-action="Cadastrar" asp-controller="Animal" method="post">
+        <label>Espécie: </label>
+        <input name="Especie" type="text" placeholder="Especie" /><br />
+
+        <label>Raça: </label>
+        <input name="Raca" type="text" placeholder="Raça" /><br />
+
+        <label>Sexo: </label>
+        <input name="Sexo" type="text" placeholder="Sexo" /><br />
+
+        <label>Cor: </label>
+        <input name="Cor" type="text" placeholder="Cor" /><br />
+
+        <label>Peso: </label>
+        <input name="Peso" type="text" placeholder="Peso" /><br />
+
+        <input type="submit" value="Cadastrar" />
+    </form>
+</body>
+</html>
