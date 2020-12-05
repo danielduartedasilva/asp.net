@@ -1,12 +1,48 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title>Gerenciamento de animais para adoção</title>
-</head>
+﻿@model List<Animal>
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<body>
-    <h2>Gerenciamento de animais</h2>
-    <a asp-action="Cadastrar" asp-controller="Animal">Cadastrar Animal</a>
-</body>
+        <h3 class="espacamento-baixo">Gerenciamento de animais</h3>
+        <a asp-action="Cadastrar" asp-controller="Animal" class="btn btn-primary espacamento-baixo">Cadastrar Animal</a>
+        
+        <table class="table table-hover table-striped espacamento-baixo">
+            <thead>
+                <tr>
 
-</html>
+                    <th>Id</th>
+                    <th>Especie</th>
+                    <th>Raca</th>
+                    <th>Sexo</th>
+                    <th>Cor</th>
+                    <th>Peso</th>
+                    <th>CriadoEm</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (Animal animalCadastrado in Model)
+                {
+                    <tr>
+                        <td>@animalCadastrado.Id</td>
+                        <td>@animalCadastrado.Especie</td>
+                        <td>@animalCadastrado.Raca</td>
+                        <td>@animalCadastrado.Sexo</td>
+                        <td>@animalCadastrado.Cor</td>
+                        <td>@animalCadastrado.Peso.ToString()</td>
+                        <td>@animalCadastrado.CriadoEm</td>
+                        <td><a asp-action="Excluir" asp-controller="Animal" asp-route-id="@animalCadastrado.Id">Excluir</a></td>
+                        @*-------------- o asp-route passa parâmetros*@
+                        <td><a asp-action="Alterar" asp-controller="Animal" asp-route-id="@animalCadastrado.Id">Alterar</a></td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+        <p><b>Quantidade de animais: </b> @Model.Count </p> @*--------------------------------------------------------------Lista a quantidade de animais da nossa lista*@
+        <p><b>Dados atualizados: </b> @DateTime.Now </p>
+    
+
+    

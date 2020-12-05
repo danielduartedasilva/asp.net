@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AdocaoWeb.DAL;
 using AdocaoWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,29 +10,46 @@ namespace AdocaoWeb.Controllers
 {
     public class AnimalController : Controller
     {
-        private readonly Context _context;
-        public AnimalController(Context context) => _context = context;    
+        private readonly AnimalDAO _animalDAO;
+        public AnimalController(AnimalDAO animalDAO) => _animalDAO = animalDAO;    
         
         public IActionResult Index()
         {
-            return View();
+            ViewBag.Title = "Gerenciamento de animais";
+            return View(_animalDAO.Listar());
         }
 
         public IActionResult Cadastrar() => View();
-        
+
         [HttpPost]
-        public IActionResult Cadastrar(string Especie, string Raca, string Sexo, string Cor, double Peso)
+        public IActionResult Cadastrar(Animal animal)
         {
-            Animal animal = new Animal
-            {
-                Especie = Especie,
-                Raca = Raca,
-                Sexo = Sexo,
-                Cor= Cor,
-                Peso = Peso
-            };
-            _context.Animais.Add(animal);
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {//-------------------------------------------------------------------------------------------------------------------------ModelState.IsValid az as validações aqui no controler
+                if (_animalDAO.Cadastrar(animal))
+                {
+                    return RedirectToAction("Index", "Animal");
+                }
+                ModelState.AddModelError("", "Já existe um animal dessa mesma espécie !!"); // ----------------------------------------------------------------serve para adição de mensagens de erro
+                 
+            }
+            return View(animal);
+        }
+        public IActionResult Alterar(int id)
+        {
+            return View(_animalDAO.BuscarPorId(id));
+        }
+
+        [HttpPost]
+        public IActionResult Alterar(Animal animal)
+        {
+            _animalDAO.Alterar(animal);
+            return RedirectToAction("Index", "Animal");
+        }
+        public IActionResult Excluir(int id)
+        {
+            _animalDAO.Ecluir(id);
+            //_context.SaveChanges();
             return RedirectToAction("Index", "Animal");
         }
     }

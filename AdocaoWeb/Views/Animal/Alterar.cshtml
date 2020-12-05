@@ -1,0 +1,40 @@
+﻿@model Animal
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>Alterar Animal</title>
+</head>
+<body>
+    <form asp-action="Alterar" asp-controller="Animal" method="post">
+        <fieldset>
+            <legend>Alterar Animal</legend>
+
+            <label asp-for="Id">Espécie: </label>
+            <input asp-for="Id" readonly type="text" placeholder="Id" /><br />
+            <input asp-for="Id" name="HdnId" type="hidden" /><br />@*----------------------------------------------------------o hidden deixa escondido*@
+
+            <label asp-for="Especie">Espécie: </label>
+            <input asp-for="Especie" type="text" placeholder="Especie" /><br />
+
+            <label asp-for="Raca">Raça: </label>
+            <input asp-for="Raca" type="text" placeholder="Raça" /><br />
+
+            <label asp-for="Sexo">Sexo: </label>
+            <input asp-for="Sexo" type="text" placeholder="Sexo" /><br />
+
+            <label asp-for="Cor">Cor: </label>
+            <input asp-for="Cor" type="text" placeholder="Cor" /><br />
+
+            <label asp-for="Peso">Peso: </label>
+            <input asp-for="Peso" type="text" placeholder="Peso" /><br />
+
+            <input type="submit" value="Salvar" />
+        </fieldset>
+    </form>
+
+</body>
+</html>

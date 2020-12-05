@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AdocaoWeb.DAL;
 using AdocaoWeb.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +25,7 @@ namespace AdocaoWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<AnimalDAO>();//---------------------------------------------------------------------------------------toda vez que eu pedir para injetar um objeto via escopo, ele cria como se fosse um singleton, mas não é um singleton, o AddScoped cria um objeto do animalDAO para cada cliente que tiver conectado no servidor
             services.AddDbContext<Context>
                 (options => options.UseSqlServer(
                     Configuration.GetConnectionString("Connection")));// -------------------------------------------- configuração de conexão com o banco de dados, o AddDbContext cria uma única instância do contexto pronto sem precisar gerenciar

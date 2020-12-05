@@ -1,29 +1,36 @@
-﻿<!DOCTYPE html>
+﻿@model Animal
+<!DOCTYPE html>
 
 <html>
 <head>
-    
+
     <meta name="viewport" content="width=device-width" />
     <title>Cadastrar</title>
 </head>
 <body>
     <form asp-action="Cadastrar" asp-controller="Animal" method="post">
-        <label>Espécie: </label>
-        <input name="Especie" type="text" placeholder="Especie" /><br />
+        <fieldset>
+            <legend>Cadastrar Animal</legend>
+            <div asp-validation-summary="ModelOnly"></div>@*----------------------------------------------------------------------para validar os campos*@
 
-        <label>Raça: </label>
-        <input name="Raca" type="text" placeholder="Raça" /><br />
+            <label asp-for="Especie">Espécie: </label>@*----------------------------------------------------------------------------------------------asp-for substituiu o for*@
+            <input asp-for="Especie" type="text" placeholder="Especie" /><br />@*-------------------------------------------------asp-for substituiu o name*@
+            <span asp-validation-for="Especie"></span>@*--------------------------------------------------------------------------------------asp-validation-for mostra as mensagens de validações da especie*@
+            
+            <label asp-for="Raca">Raça: </label>
+            <input asp-for="Raca" type="text" placeholder="Raça" /><br />
 
-        <label>Sexo: </label>
-        <input name="Sexo" type="text" placeholder="Sexo" /><br />
+            <label asp-for="Sexo">Sexo: </label>
+            <input asp-for="Sexo" type="text" placeholder="Sexo" /><br />
 
-        <label>Cor: </label>
-        <input name="Cor" type="text" placeholder="Cor" /><br />
+            <label asp-for="Cor">Cor: </label>
+            <input asp-for="Cor" type="text" placeholder="Cor" /><br />
 
-        <label>Peso: </label>
-        <input name="Peso" type="text" placeholder="Peso" /><br />
+            <label asp-for="Peso">Peso: </label>
+            <input asp-for="Peso" type="text" placeholder="Peso" /><br />
 
-        <input type="submit" value="Cadastrar" />
+            <input type="submit" value="Cadastrar" />
+        </fieldset>
     </form>
 </body>
 </html>
