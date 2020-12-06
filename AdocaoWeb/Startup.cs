@@ -26,6 +26,7 @@ namespace AdocaoWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<AnimalDAO>();//---------------------------------------------------------------------------------------toda vez que eu pedir para injetar um objeto via escopo, ele cria como se fosse um singleton, mas não é um singleton, o AddScoped cria um objeto do animalDAO para cada cliente que tiver conectado no servidor
+            services.AddScoped<CategoriaDAO>();
             services.AddDbContext<Context>
                 (options => options.UseSqlServer(
                     Configuration.GetConnectionString("Connection")));// -------------------------------------------- configuração de conexão com o banco de dados, o AddDbContext cria uma única instância do contexto pronto sem precisar gerenciar
@@ -53,7 +54,7 @@ namespace AdocaoWeb
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Animal}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -1,7 +1,4 @@
 ﻿@model List<Animal>
-@{ 
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
         <h3 class="espacamento-baixo">Gerenciamento de animais</h3>
         <a asp-action="Cadastrar" asp-controller="Animal" class="btn btn-primary espacamento-baixo">Cadastrar Animal</a>
@@ -16,6 +13,8 @@
                     <th>Sexo</th>
                     <th>Cor</th>
                     <th>Peso</th>
+                    <th>Imagem</th>
+                    <th>Categoria</th>
                     <th>CriadoEm</th>
                     <th></th>
                     <th></th>
@@ -25,13 +24,18 @@
             <tbody>
                 @foreach (Animal animalCadastrado in Model)
                 {
-                    <tr>
-                        <td>@animalCadastrado.Id</td>
-                        <td>@animalCadastrado.Especie</td>
-                        <td>@animalCadastrado.Raca</td>
-                        <td>@animalCadastrado.Sexo</td>
-                        <td>@animalCadastrado.Cor</td>
-                        <td>@animalCadastrado.Peso.ToString()</td>
+                <tr>
+                    <td>@animalCadastrado.Id</td>
+                    <td>@animalCadastrado.Especie</td>
+                    <td>@animalCadastrado.Raca</td>
+                    <td>@animalCadastrado.Sexo</td>
+                    <td>@animalCadastrado.Cor</td>
+                    <td>@animalCadastrado.Peso.ToString()</td>
+                    <td>@animalCadastrado.Categoria.Nome</td>
+                    <td>
+                        <img src="~/images/@animalCadastrado.Imagem" alt="@animalCadastrado.Especie"
+                             style="width:120px;height:100px" />@*------------------------------------------------------------------alt="@animalCadastrado.Especie" também pode ser identificado por cegos*@
+                        </td>
                         <td>@animalCadastrado.CriadoEm</td>
                         <td><a asp-action="Excluir" asp-controller="Animal" asp-route-id="@animalCadastrado.Id">Excluir</a></td>
                         @*-------------- o asp-route passa parâmetros*@

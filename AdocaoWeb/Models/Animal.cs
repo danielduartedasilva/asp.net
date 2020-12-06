@@ -11,7 +11,7 @@ namespace AdocaoWeb.Models
     public class Animal : BaseModel
     {
         [Required(ErrorMessage = "Campo obrigatório")]
-        [MinLength(5, ErrorMessage = "Mínimo 5 caracteres!")]
+        [MinLength(5, ErrorMessage = "Mínimo 3 caracteres!")]
         [MaxLength(100, ErrorMessage = "Máximo 100 caracteres!")]
         public string Especie { get; set; }
 
@@ -26,5 +26,12 @@ namespace AdocaoWeb.Models
 
 
         public double Peso { get; set; }
+
+        public string Imagem { get; set; }
+
+        [ForeignKey("CategoriaId")]//-----------------------------------------------------------------------------------ForeignKey serve para especificar que dentro desse campo iremos utilizar uma chave estrangeira
+        public Categoria Categoria { get; set; }
+
+        public int CategoriaId { get; set; }//-------------------------------------------------------------------------para facilitar e otimizar na hora da busca
     }
 }

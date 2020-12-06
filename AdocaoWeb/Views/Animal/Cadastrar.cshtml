@@ -1,36 +1,56 @@
 ﻿@model Animal
-<!DOCTYPE html>
 
-<html>
-<head>
+<form asp-action="Cadastrar" asp-controller="Animal" enctype="multipart/form-data" method="post">@*------------------------------------enctype="multipart/form-data", esta propriedade é para que as imagens*@
 
-    <meta name="viewport" content="width=device-width" />
-    <title>Cadastrar</title>
-</head>
-<body>
-    <form asp-action="Cadastrar" asp-controller="Animal" method="post">
-        <fieldset>
-            <legend>Cadastrar Animal</legend>
-            <div asp-validation-summary="ModelOnly"></div>@*----------------------------------------------------------------------para validar os campos*@
+    <fieldset>
+        <legend>Cadastrar Animal</legend>
+        <div asp-validation-summary="ModelOnly"></div>@*---------------------------------------------------------------------para validar os campos*@
 
+
+        <div class="form-group">
             <label asp-for="Especie">Espécie: </label>@*----------------------------------------------------------------------------------------------asp-for substituiu o for*@
-            <input asp-for="Especie" type="text" placeholder="Especie" /><br />@*-------------------------------------------------asp-for substituiu o name*@
-            <span asp-validation-for="Especie"></span>@*--------------------------------------------------------------------------------------asp-validation-for mostra as mensagens de validações da especie*@
-            
+            <input class="form-control" asp-for="Especie" type="text" placeholder="Especie" />@*-------------------------------------------------asp-for substituiu o name*@
+            <span class="text-danger" asp-validation-for="Especie"></span>@*--------------------------------------------------------------------------------------asp-validation-for mostra as mensagens de validações da especie*@
+
+        </div>
+
+        <div class="form-group">
             <label asp-for="Raca">Raça: </label>
-            <input asp-for="Raca" type="text" placeholder="Raça" /><br />
+            <input class="form-control" asp-for="Raca" type="text" placeholder="Raça" />
+            <span class="text-danger" asp-validation-for="Raca"></span>
+        </div>
 
+        <div class="form-group">
             <label asp-for="Sexo">Sexo: </label>
-            <input asp-for="Sexo" type="text" placeholder="Sexo" /><br />
+            <input class="form-control" asp-for="Sexo" type="text" placeholder="Sexo" />
+            <span class="text-danger" asp-validation-for="Sexo"></span>
+        </div>
 
+        <div class="form-group">
             <label asp-for="Cor">Cor: </label>
-            <input asp-for="Cor" type="text" placeholder="Cor" /><br />
+            <input class="form-control" asp-for="Cor" type="text" placeholder="Cor" />
+            <span class="text-danger" asp-validation-for="Cor"></span>
+        </div>
 
+        <div class="form-group">
             <label asp-for="Peso">Peso: </label>
-            <input asp-for="Peso" type="text" placeholder="Peso" /><br />
+            <input class="form-control" asp-for="Peso" type="text" placeholder="Peso" />
+            <span class="text-danger" asp-validation-for="Peso"></span>
+        </div>
 
-            <input type="submit" value="Cadastrar" />
-        </fieldset>
-    </form>
-</body>
-</html>
+        <div class="form-group">
+            <label asp-for="Imagem">Imagem:</label>
+            <input class="form-control-file" type="file" name="file" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CategoriaId">Categoria:</label>
+            <select class="form-control" asp-items="@ViewBag.Categorias" asp-for="CategoriaId">@*------------------------------------asp-items preenche automaticamente os itens da lista*@
+            <option> -- SELECIONE -- </option>
+        </select>
+    </div>
+
+    <input type="submit" class="btn btn-info" value="Cadastrar" />
+    </fieldset>
+</form>
+

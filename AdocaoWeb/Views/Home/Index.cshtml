@@ -1,0 +1,37 @@
+﻿@model List<Animal>
+
+@{ List<Categoria> categorias = ViewBag.Categorias; }
+
+<div id="categorias" class="div-categoria">
+    @foreach (Categoria categoriaCadastrada in categorias)
+    {
+        <a class="link-categoria" asp-action="Index" asp-controller="Home" asp-route-id="@categoriaCadastrada.Id">
+            @categoriaCadastrada.Nome
+        </a>
+    }
+
+</div>
+
+<div id="animais" class="row">
+    @foreach (Animal animalCadastrado in Model)
+    {
+    <div class="col-sm-3 div-conteudo">
+        <img src="~/images/@animalCadastrado.Imagem" alt="@animalCadastrado.Especie"
+             style="width:120px;height:100px" class="img-thumbnail" />
+        <br />
+        <span>@animalCadastrado.Especie</span>
+        <br />
+        <span>@animalCadastrado.Raca</span>
+        <br />
+        <span>@animalCadastrado.Sexo</span>
+        <br />
+    </div>
+        }
+    </div>
+    
+
+@foreach (var item in Model) {
+      
+   
+}
+
