@@ -11,7 +11,7 @@ namespace AdocaoWeb.Models
     public class Animal : BaseModel
     {
         [Required(ErrorMessage = "Campo obrigatório")]
-        [MinLength(5, ErrorMessage = "Mínimo 3 caracteres!")]
+        [MinLength(3, ErrorMessage = "Mínimo 3 caracteres!")]
         [MaxLength(100, ErrorMessage = "Máximo 100 caracteres!")]
         public string Especie { get; set; }
 

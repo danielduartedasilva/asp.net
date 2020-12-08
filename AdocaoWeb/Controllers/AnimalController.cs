@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdocaoWeb.DAL;
 using AdocaoWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AdocaoWeb.Controllers
 {
+    //[Authorize(Roles = "ADM")]//------------------------------------------------------------------------------------------------aqui diz quem tem acesso as regras, como funcionalidades
+    [Authorize]
     public class AnimalController : Controller
     {
         private readonly AnimalDAO _animalDAO;
@@ -22,7 +25,7 @@ namespace AdocaoWeb.Controllers
             _categoriaDAO = categoriaDAO;
             _hosting = hosting;
         }
-        
+        //[AllowAnonymous]
         public IActionResult Index()
         {//------------------------------------------------------------------------------------------------------------------------------configuração para abrir o index do animal
             ViewBag.Title = "Gerenciamento de Animais";

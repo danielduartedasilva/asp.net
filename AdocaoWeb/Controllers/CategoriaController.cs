@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdocaoWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdocaoWeb.Controllers
 {
+    [Authorize]
     public class CategoriaController : Controller
     {
         private readonly Context _context;

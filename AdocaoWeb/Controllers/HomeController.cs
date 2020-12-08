@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdocaoWeb.DAL;
 using AdocaoWeb.Models;
+using AdocaoWeb.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdocaoWeb.Controllers
@@ -12,13 +13,15 @@ namespace AdocaoWeb.Controllers
     {
         private readonly AnimalDAO _animalDAO;
         private readonly CategoriaDAO _categoriaDAO;
-        
-       
-        public HomeController(AnimalDAO animalDAO, CategoriaDAO categoriaDAO)
+        private readonly BichoAdocaoDAO _bichoAdocaoDAO;
+        private readonly Sessao _sessao;
+
+        public HomeController(AnimalDAO animalDAO, CategoriaDAO categoriaDAO, BichoAdocaoDAO bichoAdocaoDAO, Sessao sessao)
         {
             _animalDAO = animalDAO;
             _categoriaDAO = categoriaDAO;
-            
+            _bichoAdocaoDAO = bichoAdocaoDAO;
+            _sessao = sessao;
         }
         public IActionResult Index(int id)
         {
@@ -31,9 +34,22 @@ namespace AdocaoWeb.Controllers
             //}
             return View(animais);
         }
-        public IActionResult Reservar()
+        public IActionResult AdicionarACesta(int id)
         {
-            return View();
+            Animal animal = _animalDAO.BuscarPorId(id);
+            BichoAdocao bicho = new BichoAdocao
+            {
+                Animal = animal,
+                Quantidade = 1,
+                CestaId = _sessao.BuscarCestaId()
+            };
+            _bichoAdocaoDAO.Cadastrar(bicho);
+            return RedirectToAction("CestaDeAdocao");
+        }
+
+        public IActionResult CestaDeAdocao()
+        {
+            return View(_bichoAdocaoDAO.ListarPorCestaId(_sessao.BuscarCestaId()));
         }
     }
 }
