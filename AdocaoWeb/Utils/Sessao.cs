@@ -14,7 +14,7 @@ namespace AdocaoWeb.Utils
         private const string CESTA_ID = "CESTA_ID"; //-------------------------------------------------------------const constantes são colocadas com letras maiúsculas, CESTA_ID foi criado para guardar o nome da chave, para que não tenha possibilidade de confundir quando for chamar a informação
         public string BuscarCestaId()
         {
-            //-----------------------------------------------------------------------------------------------------------explicação do if abaixo: quando o método BuscarCarrinhoId for chamado, numa primeira vez, o _http.HttpContext.Session.GetString(CARRINHO_ID) vai estar nulo para aquele navegador, sendo assim uma sessão é criada, seto uma string que é o Guid vinculado a chave CARRINHO_ID, quando terminar o if ele busca o CARRINHO_ID agora com informação la dentro e não mais nulo, numa segunda vez que o método for buscado ao perguntar para o if não será mais nulo e retorna o else
+            //-----------------------------------------------------------------------------------------------------------explicação do if abaixo: quando o método BuscarCestaId for chamado, numa primeira vez, o _http.HttpContext.Session.GetString(CARRINHO_ID) vai estar nulo para aquele navegador, sendo assim uma sessão é criada, seto uma string que é o Guid vinculado a chave CESTA_ID, quando terminar o if ele busca o CESTA_ID agora com informação la dentro e não mais nulo, numa segunda vez que o método for buscado ao perguntar para o if não será mais nulo e retorna o else
             if (_http.HttpContext.Session.GetString(CESTA_ID) == null)
             {
                 _http.HttpContext.Session.SetString(CESTA_ID, Guid.NewGuid().ToString());
