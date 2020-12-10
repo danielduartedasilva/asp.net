@@ -9,7 +9,7 @@
 
         <div class="form-group">
             <label asp-for="Especie">Espécie: </label>@*----------------------------------------------------------------------------------------------asp-for substituiu o for*@
-            <input class="form-control" asp-for="Especie" type="text" placeholder="Especie" />@*-------------------------------------------------asp-for substituiu o name*@
+            <input class="form-control" asp-for="Especie" type="text" placeholder="Espécie" />@*-------------------------------------------------asp-for substituiu o name*@
             <span class="text-danger" asp-validation-for="Especie"></span>@*--------------------------------------------------------------------------------------asp-validation-for mostra as mensagens de validações da especie*@
 
         </div>
@@ -38,16 +38,19 @@
             <span class="text-danger" asp-validation-for="Peso"></span>
         </div>
 
-        <div class="form-group">
-            <label asp-for="Imagem">Imagem:</label>
-            <input class="form-control-file" type="file" name="file" />
-        </div>
+
 
         <div class="form-group">
             <label asp-for="CategoriaId">Categoria:</label>
-            <select class="form-control" asp-items="@ViewBag.Categorias" asp-for="CategoriaId">@*------------------------------------asp-items preenche automaticamente os itens da lista*@
+            <select class="form-control" asp-items="@ViewBag.Categorias" asp-for="CategoriaId">
+                @*------------------------------------asp-items preenche automaticamente os itens da lista*@
             <option> -- SELECIONE -- </option>
         </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Imagem">Imagem:</label>
+        <input class="form-control-file" type="file" name="file" />
     </div>
 
     <input type="submit" class="btn btn-info" value="Cadastrar" />

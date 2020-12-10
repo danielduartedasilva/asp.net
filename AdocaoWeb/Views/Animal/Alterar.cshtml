@@ -3,25 +3,59 @@
     <form asp-action="Alterar" asp-controller="Animal" method="post">
         <fieldset>
             <legend>Alterar Animal</legend>
+            <div asp-validation-summary="ModelOnly"></div>
 
-            <label asp-for="Id">Espécie: </label>
-            <input asp-for="Id" readonly type="text" placeholder="Id" /><br />
-            <input asp-for="Id" name="HdnId" type="hidden" /><br />@*----------------------------------------------------------o hidden deixa escondido*@
+            <div class="form-group">
+                <label asp-for="Id">Id: </label>
+                <input asp-for="Id" readonly type="text" placeholder="Id" /><br />
+                <input asp-for="Id" name="HdnId" type="hidden" /><br />@*----------------------------------------------------------o hidden deixa escondido*@
+            </div>
 
-            <label asp-for="Especie">Espécie: </label>
-            <input asp-for="Especie" type="text" placeholder="Especie" /><br />
 
-            <label asp-for="Raca">Raça: </label>
-            <input asp-for="Raca" type="text" placeholder="Raça" /><br />
+            <div class="form-group">
+                <label asp-for="Especie">Espécie: </label>@*----------------------------------------------------------------------------------------------asp-for substituiu o for*@
+                <input class="form-control" asp-for="Especie" type="text" placeholder="Espécie" />@*-------------------------------------------------asp-for substituiu o name*@
+                <span class="text-danger" asp-validation-for="Especie"></span>@*--------------------------------------------------------------------------------------asp-validation-for mostra as mensagens de validações da especie*@
+            </div>
 
-            <label asp-for="Sexo">Sexo: </label>
-            <input asp-for="Sexo" type="text" placeholder="Sexo" /><br />
+            <div class="form-group">
+                <label asp-for="Raca">Raça: </label>
+                <input class="form-control" asp-for="Raca" type="text" placeholder="Raça" />
+                <span class="text-danger" asp-validation-for="Raca"></span>
+            </div>
 
-            <label asp-for="Cor">Cor: </label>
-            <input asp-for="Cor" type="text" placeholder="Cor" /><br />
+            <div class="form-group">
+                <label asp-for="Sexo">Sexo: </label>
+                <input class="form-control" asp-for="Sexo" type="text" placeholder="Sexo" />
+                <span class="text-danger" asp-validation-for="Sexo"></span>
+            </div>
 
-            <label asp-for="Peso">Peso: </label>
-            <input asp-for="Peso" type="text" placeholder="Peso" /><br />
+            <div class="form-group">
+                <label asp-for="Cor">Cor: </label>
+                <input class="form-control" asp-for="Cor" type="text" placeholder="Cor" />
+                <span class="text-danger" asp-validation-for="Cor"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Peso">Peso: </label>
+                <input class="form-control" asp-for="Peso" type="text" placeholder="Peso" />
+                <span class="text-danger" asp-validation-for="Peso"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="CategoriaId">Categoria:</label>
+                <select class="form-control" asp-items="@ViewBag.Categorias" asp-for="CategoriaId">
+                    @*------------------------------------asp-items preenche automaticamente os itens da lista*@
+                    <option> -- SELECIONE -- </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Imagem">Imagem:</label>
+                <input class="form-control-file" type="file" name="file" />
+            </div>
 
             <input type="submit" value="Salvar" />
         </fieldset>

@@ -15,7 +15,8 @@ namespace AdocaoWeb.DAL
         public List<Animal> Listar() => _context.Animais.Include(x => x.Categoria).ToList();//--------------------------------------------------------------------------------------------------Método que lista TODOS os animais, o include é porque precisamos dos dados da outra tabela
         public Animal BuscarPorId(int id) => _context.Animais.Find(id);//----------------------------------------------------------------------------------------------------Construtor, que passo o que chega como parâmetro para o nosso contexto glogal
         public Animal BuscarPorEspecie(string especie) => _context.Animais.FirstOrDefault(x => x.Especie == especie);//-------------------------------------------------------------------------------------------------- pega o primeiro que encontrar, se não entrantrar devolve nulo, x vai na tabela na linha do especie e compara
-
+        public Animal BuscarPorCor(string cor) => _context.Animais.FirstOrDefault(x => x.Cor == cor);
+        public Animal BuscarPorRaca(string raca) => _context.Animais.FirstOrDefault(x => x.Raca == raca);
         public List<Animal> ListarPorCategoria(int id) => 
             _context.Animais.Where(x => x.CategoriaId == id).ToList();//--------------------------------------------------------------------------------------------o x é uma expressão lambda, para unir dados de tabelas do banco
         public bool Cadastrar(Animal animal)

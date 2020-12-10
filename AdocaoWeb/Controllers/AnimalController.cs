@@ -58,10 +58,10 @@ namespace AdocaoWeb.Controllers
                 if (_animalDAO.Cadastrar(animal))
                 {
                     return RedirectToAction("Index", "Animal");
-                }
-                ModelState.AddModelError("", "Já existe um animal dessa mesma espécie !!"); // ----------------------------------------------------------------serve para adição de mensagens de erro
-                 
             }
+            ModelState.AddModelError("", "Já existe um animal dessa mesma espécie !!"); // ----------------------------------------------------------------serve para adição de mensagens de erro
+
+        }
             ViewBag.Categorias = new SelectList(_categoriaDAO.Listar(), "Id", "Nome");
             return View(animal);
         }

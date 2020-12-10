@@ -36,7 +36,7 @@ namespace AdocaoWeb
             services.AddScoped<AnimalDAO>();//---------------------------------------------------------------------------------------toda vez que eu pedir para injetar um objeto via escopo, ele cria como se fosse um singleton, mas não é um singleton, o AddScoped cria um objeto do animalDAO para cada cliente que tiver conectado no servidor
             services.AddScoped<CategoriaDAO>();
             services.AddScoped<BichoAdocaoDAO>();
-            services.AddScoped<AdocaoDAO>();
+            //services.AddScoped<AdocaoDAO>();
             services.AddScoped<Sessao>();
             services.AddHttpContextAccessor();//--------------------------------------------------------------------------------------- permite que o objeto que manipula a sessão chegue injetado,
             services.AddDbContext<Context>

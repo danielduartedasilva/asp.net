@@ -15,6 +15,6 @@ namespace AdocaoWeb.Models
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<BichoAdocao> BichosAdocao { get; set; }
         public DbSet<UsuarioView> Usuarios { get; set; }
-        public DbSet<Adocao> Adocoes { get; set; }
+        //public DbSet<Adocao> Adocoes { get; set; }
     }
 }

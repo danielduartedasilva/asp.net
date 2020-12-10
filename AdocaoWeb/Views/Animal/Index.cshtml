@@ -31,11 +31,12 @@
                     <td>@animalCadastrado.Sexo</td>
                     <td>@animalCadastrado.Cor</td>
                     <td>@animalCadastrado.Peso.ToString()</td>
-                    <td>@animalCadastrado.Categoria.Nome</td>
+
                     <td>
                         <img src="~/images/@animalCadastrado.Imagem" alt="@animalCadastrado.Especie"
                              style="width:120px;height:100px" />@*------------------------------------------------------------------alt="@animalCadastrado.Especie" também pode ser identificado por cegos*@
                         </td>
+                        <td>@animalCadastrado.Categoria.Nome</td>
                         <td>@animalCadastrado.CriadoEm</td>
                         <td><a asp-action="Excluir" asp-controller="Animal" asp-route-id="@animalCadastrado.Id">Excluir</a></td>
                         @*-------------- o asp-route passa parâmetros*@

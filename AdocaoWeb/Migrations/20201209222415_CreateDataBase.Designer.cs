@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AdocaoWeb.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20201207183318_AddEnderecoTableUsuario")]
-    partial class AddEnderecoTableUsuario
+    [Migration("20201209222415_CreateDataBase")]
+    partial class CreateDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
